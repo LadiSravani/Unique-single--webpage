@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Decision Spinner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fdf6e3;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+      border: 2px solid #aaa;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 25px;
+      background-color: #28a745;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    .emoji {
+      font-size: 50px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎲 Decision Spinner</h1>
+  <p>Type your question and get a fun answer!</p>
+
+  <input type="text" id="userQuestion" placeholder="Type your question here..." />
+  <br>
+  <button onclick="giveAnswer()">Spin!</button>
+
+  <div class="result" id="answer"></div>
+  <div class="emoji" id="emoji"></div>
+
+  <script>
+    function giveAnswer() {
+      const answers = [
+        { text: "Yes!", emoji: "✅" },
+        { text: "No!", emoji: "❌" },
+        { text: "Maybe...", emoji: "🤔" }
+      ];
+
+      const userQuestion = document.getElementById("userQuestion").value.trim();
+      const answerDiv = document.getElementById("answer");
+      const emojiDiv = document.getElementById("emoji");
+
+      if (userQuestion === "") {
+        answerDiv.innerText = "Please ask a question!";
+        emojiDiv.innerText = "🗣️";
+        return;
+      }
+
+      const randomAnswer = answers[Math.floor(Math.random() * answers.length)];
+      answerDiv.innerText = randomAnswer.text;
+      emojiDiv.innerText = randomAnswer.emoji;
+    }
+  </script>
+
+</body>
+</html>
